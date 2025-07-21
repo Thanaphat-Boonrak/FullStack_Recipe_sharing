@@ -1,4 +1,4 @@
-# Recipe Sharing Web Application
+# Recipe Sharing Web Application (เป็น Project เก่าที่ไม่ได้ถูก upload ขึ้น git)
 
 เว็บแอปพลิเคชันสำหรับแชร์สูตรอาหาร (Recipe Sharing) ที่พัฒนาด้วย
 
