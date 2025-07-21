@@ -1,0 +1,28 @@
+<div class="mt-16 px-6">
+  <div
+    class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center"
+  >
+    @for (item of recipe(); track item.id) {
+    <app-recipe-card
+      (deleteRecipie)="deleteRecipe($event)"
+      [recipe]="item"
+      class="w-full max-w-sm"
+    />
+    } @empty {
+    <div class="col-span-full text-center text-gray-500 text-lg mt-10">
+      🍽️ <span class="font-medium">No Recipe Found</span>
+    </div>
+    }
+  </div>
+</div>
+
+<div class="fixed bottom-8 right-8 z-50">
+  <button
+    (click)="onClick()"
+    mat-fab
+    color="primary"
+    class="!bg-pink-500 hover:!bg-pink-600 shadow-xl transition-transform transform hover:scale-110"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

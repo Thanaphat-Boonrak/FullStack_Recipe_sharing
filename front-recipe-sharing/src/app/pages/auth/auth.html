@@ -1,0 +1,117 @@
+<div class="flex justify-center items-center h-screen">
+  <div
+    class="container relative flex w-[850px] h-[600px] rounded-2xl overflow-hidden shadow-xl"
+  >
+    <div class="w-1/2 relative">
+      <img
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?fit=crop&w=800&q=80"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white px-4 text-center"
+      >
+        <h1 class="text-3xl font-bold mb-2">Share Your Food</h1>
+        <p class="text-lg">Let’s connect us</p>
+      </div>
+    </div>
+
+    <div class="w-1/2 bg-white flex items-center justify-center">
+      <div class="w-full max-w-sm p-6">
+        <h2 class="text-2xl font-bold text-center mb-6">
+          {{ isLogin ? "Login" : "Sign Up" }}
+        </h2>
+
+        @if (!isLogin) {
+        <form [formGroup]="registerform" (ngSubmit)="handleRegister()">
+          <div class="flex justify-between items-center">
+            <mat-label>Full Name</mat-label>
+            @if (isInvalidRegister('fullname')) {
+            <span class="text-red-500 text-sm"> Please Type Name </span>
+            }
+          </div>
+          <mat-form-field appearance="outline" class="w-full mb-4">
+            <input matInput formControlName="fullname" />
+          </mat-form-field>
+
+          <div class="flex justify-between items-center">
+            <mat-label>Email</mat-label>
+            @if (isInvalidRegister('email')) {
+            <span class="text-red-500 text-sm"> Please Type Email</span>
+            }
+          </div>
+          <mat-form-field appearance="outline" class="w-full mb-4">
+            <input matInput formControlName="email" type="email" />
+          </mat-form-field>
+
+          <div class="flex justify-between items-center">
+            <mat-label>Password</mat-label>
+            @if (isInvalidRegister('password')) {
+            <span class="text-red-500 text-sm"> Please Type Password </span>
+            }
+          </div>
+          <mat-form-field appearance="outline" class="w-full mb-6">
+            <input matInput formControlName="password" type="password" />
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-full py-2 rounded-full mb-4"
+            [disabled]="registerform.invalid"
+          >
+            Sign Up
+          </button>
+        </form>
+        }
+
+        @if (isLogin) {
+        <form [formGroup]="loginform" (ngSubmit)="handleLogin()">
+          <div class="flex justify-between items-center">
+            <mat-label>Email</mat-label>
+            @if (isInvalidLogin('email')) {
+            <span class="text-red-500 text-sm">Invalid email</span>
+            }
+          </div>
+          <mat-form-field appearance="outline" class="w-full mb-4">
+            <input matInput formControlName="email" type="email" />
+          </mat-form-field>
+
+          <div class="flex justify-between items-center">
+            <mat-label>Password</mat-label>
+            @if (isInvalidLogin('password')) {
+            <span class="text-red-500 text-sm">Required</span>
+            }
+          </div>
+          <mat-form-field appearance="outline" class="w-full mb-4">
+            <input matInput formControlName="password" type="password" />
+          </mat-form-field>
+
+          @if (loginError) {
+          <p class="text-red-500 text-sm mb-2">{{ loginError }}</p>
+          }
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-full py-2 rounded-full mb-4"
+            [disabled]="loginform.invalid"
+          >
+            Login
+          </button>
+        </form>
+        }
+
+        <p class="text-center text-sm text-gray-600">
+          {{ isLogin ? "Don't have an account?" : "Already have an account?" }}
+          <button
+            class="text-blue-500 font-semibold hover:underline"
+            type="button"
+            (click)="toggleMode()"
+          >
+            {{ isLogin ? "Sign Up" : "Login" }}
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<mat-card class="example-card mt-5 mb-5" appearance="outlined">
+  <mat-card-header>
+    <img mat-card-avatar [src]="recipe()?.image" />
+    <div mat-card-avatar></div>
+    <mat-card-title>{{ recipe()?.user?.name }}</mat-card-title>
+    <mat-card-subtitle>{{ recipe()?.title }}</mat-card-subtitle>
+  </mat-card-header>
+  <img class="max-h-[400px]" mat-card-image [src]="recipe()?.image" />
+  <mat-card-content>
+    <p class="break-words whitespace-normal">
+      {{ recipe()?.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button (click)="handleOpenEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="handleDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

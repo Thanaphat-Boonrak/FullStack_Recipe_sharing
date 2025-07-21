@@ -1,0 +1,61 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="w-[27rem] p-6 rounded-lg shadow-md space-y-4"
+>
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" placeholder="Type a title" matInput />
+    </mat-form-field>
+    @if (isInvalid('title')) {
+    <p class="text-red-600 text-sm mt-1">Please type Title</p>
+    }
+  </div>
+
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Description</mat-label>
+      <input
+        formControlName="description"
+        placeholder="Type a description"
+        matInput
+      />
+    </mat-form-field>
+    @if (isInvalid('description')) {
+    <p class="text-red-600 text-sm mt-1">Please type Description</p>
+    }
+  </div>
+
+  <div>
+    <mat-radio-group formControlName="foodType">
+      <mat-radio-button value="veg">Vegeterian</mat-radio-button>
+      <mat-radio-button value="non_veg">Not Vegeterian</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Image URL</mat-label>
+      <input
+        formControlName="imageUrl"
+        placeholder="Paste image URL"
+        matInput
+      />
+    </mat-form-field>
+    @if (isInvalid('imageUrl')) {
+    <p class="text-red-600 text-sm mt-1">Please provide Image URL</p>
+    }
+  </div>
+
+  <div class="flex justify-between items-center mt-4">
+    <div class="flex gap-2">
+      <button type="submit" matButton="filled" [disabled]="form.invalid">
+        Confirm
+      </button>
+      <button type="button" (click)="onCancel()" matButton="filled">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

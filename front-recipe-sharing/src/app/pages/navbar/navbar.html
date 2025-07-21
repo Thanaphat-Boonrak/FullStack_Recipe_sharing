@@ -1,0 +1,21 @@
+@if (authService.isLogin()) {
+<mat-toolbar
+  color="primary"
+  class="flex justify-between items-center px-6 py-2 shadow-md"
+>
+  <div class="flex items-center gap-6">
+    <span class="text-xl font-bold">🍽️ MyFoodApp</span>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <span class="font-medium"> สวัสดี, {{ name() }} </span>
+
+    <button
+      (click)="logout()"
+      class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
+    >
+      Logout
+    </button>
+  </div>
+</mat-toolbar>
+}
